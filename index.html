@@ -156,7 +156,7 @@ db.transaction(function(transaction) {
       if (result != null && result.rows != null) {
         for (var j = 0; j < result.rows.length; j++) {
           var row = result.rows.item(j);
-		  var db1 = new PouchDB('testak');
+		  //var db1 = new PouchDB('testak');
 		      for (var i=0; i<string_length; i++) {
                var rnum = Math.floor(Math.random() * chars.length);
 			    randomstring += chars.substring(rnum,rnum+1);
