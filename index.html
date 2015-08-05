@@ -128,7 +128,7 @@ function ListDBValues() {
 
 
 function saveclick(){
-$.ajax({
+/*$.ajax({
  url: 'https://www.google.co.in/',
  success: function(data) {
    alert('Connected');
@@ -140,7 +140,7 @@ $.ajax({
       savelocal();
 	  alert("save in local db");
 	   }
-	  });
+	  });*/
 	  }
 function sync1(){
 
@@ -231,7 +231,7 @@ function savelocal() {
        user name<input type="text" id="uname"/><br>
 address<input type="text" id="address"/><br>
 email<input type="text" id="email1"/><br>
-<button onclick="saveclick()">save</button>
+<button onclick="savelocal()">save</button>
 <button onclick="sync1()">sync1</button>
 <span id="lbUsers"></span>
 	   <div class="app">
