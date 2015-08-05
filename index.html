@@ -96,7 +96,19 @@ function onBodyLoad1(){
  tx.executeSql( 'CREATE TABLE IF NOT EXISTS User(Username text, adress TEXT NOT NULL, email TEXT NOT NULL)',
 [],nullHandler,errorHandler);
  },errorHandler,successCallBack);
- 
+
+ $.ajax({
+ url: 'https://www.google.co.in/',
+ success: function(data) {
+   alert('Connected');
+   sync1();
+    location.replace('http://192.168.0.132:8905/home/Mobile/cordys/WiproCSO/Web/html/offlinedbsync.htm');
+ },
+ error: function(data) {
+   alert('No Internet Connection.');
+
+  	   }
+	  });
 }
  
 // list the values in the database to the screen using jquery to
@@ -393,8 +405,8 @@ db1.replicate.to('http://115.119.117.86:5984/testak');
 <!--second -->
 
 
-<input class="toggle-box" id="header" type="checkbox">
-<label for="header" style="
+<input class="toggle-box" id="header5" type="checkbox">
+<label for="header5" style="
     margin: 1%;
     background-color: #4F5150;
 "><h4 style="color:white">Customer / Competitor Details</h4></label>
