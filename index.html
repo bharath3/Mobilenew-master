@@ -160,7 +160,9 @@ db.transaction(function(transaction) {
 		      for (var i=0; i<string_length; i++) {
                var rnum = Math.floor(Math.random() * chars.length);
 			    randomstring += chars.substring(rnum,rnum+1);
+				
        }
+	   alert(randomstring);
          db1.put({
     _id: randomstring,
   uname:row.Username ,
