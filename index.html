@@ -162,7 +162,8 @@ db.transaction(function(transaction) {
 			    randomstring += chars.substring(rnum,rnum+1);
 				
        }
-	   alert(randomstring);
+	   //alert(randomstring);
+	   alert(row.Username);
          db1.put({
     _id: randomstring,
   uname:row.Username ,
