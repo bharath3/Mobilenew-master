@@ -145,6 +145,7 @@ $.ajax({
 function sync1(){
 
   var db1 = new PouchDB('testak');
+  var remoteDB = new PouchDB('http://115.119.117.86:5984/testak')
  var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
        var string_length = 5;
       
@@ -166,12 +167,20 @@ db.transaction(function(transaction) {
   address:row.adress,
   email1:row.email
 });
-db1.replicate.to('http://115.119.117.86:5984/testak');
+
+
         }
       }
      },errorHandler);
  },errorHandler,nullHandler);
- 
+ alert(db1);
+db1.replicate.to(remoteDB).on('complete', function () {
+  // yay, we're done!
+  alert("Done")
+}).on('error', function (err) {
+  // boo, something went wrong!
+  alert(err);
+});
  
   db.transaction(function(transaction) {
    transaction.executeSql('SELECT * FROM User;', [],
