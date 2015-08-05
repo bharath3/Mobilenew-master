@@ -1,209 +1,36 @@
 <html>
 <head>
-   <meta name="viewport" content="width=default-width; user-
-scalable=no" />
-   <meta http-equiv="Content-type" content="text/html;charset=utf-8">
- 
-   <title>Embedded Sql Example</title>
- 
-<!-- include the next line to use phonegap javascript functions -->
-
-    <script type="text/javascript" charset="utf-8" src="js/pouchdb-3.6.0.min.js"></script>
- <script type="text/javascript" charset="utf-8" src="js/phone.js"></script>
-<!-- include the next line to use jquery functions in your application
-you must download this and include the directory your html file is in
--->
-
-<script type="text/javascript" charset="utf-8" src="js/jQuery.js"></script>
+<script src="js/pouchdb-3.6.0.min.js" type="text/javascript"></script>
 <script>
-var i=0,j=0,k=0;
- var a=$("#uname").val();
-	   var b=$("#address").val();
-	   var c=$("#email1").val();
-	 
-var randomstring="";
-var db;
-var shortName = 'WebSqlDB';
-var version = '1.0';
-var displayName = 'WebSqlDB';
-var maxSize = 65535;
- 
-// this is called when an error happens in a transaction
-function errorHandler(transaction, error) {
-   alert('Error: ' + error.message + ' code: ' + error.code);
- 
-}
- 
-// this is called when a successful transaction happens
-function successCallBack() {
- //  alert("DEBUGGING: success");
- 
-}
- 
-function nullHandler(){};
- 
-// called when the application loads
-function onBodyLoad1(){
- 
-// This alert is used to make sure the application is loaded correctly
-// you can comment this out once you have the application working
-//alert("DEBUGGING: we are in the onBodyLoad() function");
- 
- if (!window.openDatabase) {
-   // not all mobile devices support databases  if it does not, the
-//following alert will display
-   // indicating the device will not be albe to run this application
-   alert('Databases are not supported in this browser.');
-   return;
- }
- 
-// this line tries to open the database base locally on the device
-// if it does not exist, it will create it and return a database
-//object stored in variable db
- db = openDatabase(shortName, version, displayName,maxSize);
- 
-// this line will try to create the table User in the database just
-//created/openned
+var db = new PouchDB('testak');
+var a;
+if (typeof(Storage) != "undefined") {
+    // Store
+    //localStorage.setItem("lastname", "Smith");
+	//localStorage.setItem("username","bharath");
+	//a = localStorage.lastname;
+	
+	db.put({
 
- db.transaction(function(tx){
- 
-  // you can uncomment this next line if you want the User table to be
-//empty each time the application runs
-  // tx.executeSql( 'DROP TABLE User',nullHandler,nullHandler);
- 
-  // this line actually creates the table User if it does not exist
-//and sets up the three columns and their types
-  // note the UserId column is an auto incrementing column which is
-//useful if you want to pull back distinct rows
-  // easily from the table.
- tx.executeSql( 'CREATE TABLE IF NOT EXISTS User(Username text, adress TEXT NOT NULL, email TEXT NOT NULL)',
-[],nullHandler,errorHandler);
- },errorHandler,successCallBack);
- 
-}
- 
-// list the values in the database to the screen using jquery to
-//update the #lbUsers element
-function ListDBValues() {
- 
- if (!window.openDatabase) {
-  alert('Databases are not supported in this browser.');
-  return;
- }
- 
-// this line clears out any content in the #lbUsers element on the
-//page so that the next few lines will show updated
-// content and not just keep repeating lines
- $('#lbUsers').html('');
- 
-// this next section will select all the content from the User table
-//and then go through it row by row
-// appending the UserId  FirstName  LastName to the  #lbUsers element
-//on the page
-
- 
- return;
- 
-}
- 
-// this is the function that puts values into the database using the
-//values from the text boxes on the screen
-
-
-function saveclick(){
-$.ajax({
- url: 'https://www.google.co.in/',
- success: function(data) {
-   alert('Connected');
-   sync1();
-   alert("thanks");
-    //location.replace('http://192.168.0.132:8905/home/Mobile/onlinepageak.htm');
- },
- error: function(data) {
-   alert('No Internet Connection.');
-      savelocal();
-	  alert("save in local db");
-	   }
-	  });
-	  }
-function sync1(){
-
-  var db1 = new PouchDB('testak');
- var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-       var string_length = 5;
-      
-    
-db.transaction(function(transaction) {
-   transaction.executeSql('SELECT * FROM User;', [],
-     function(transaction, result) {
-      if (result != null && result.rows != null) {
-        for (var j = 0; j < result.rows.length; j++) {
-          var row = result.rows.item(j);
-		  var db1 = new PouchDB('testak');
-		      for (var i=0; i<string_length; i++) {
-               var rnum = Math.floor(Math.random() * chars.length);
-			    randomstring += chars.substring(rnum,rnum+1);
-       }
-         db1.put({
-    _id: randomstring,
-  uname:row.Username ,
-  address:row.adress,
-  email1:row.email
+  _id: 'trick@g.com',
+  name: localStorage.lastname,
+  age: 68
 });
-db1.replicate.to('http://115.119.117.86:5984/testak');
-        }
-      }
-     },errorHandler);
- },errorHandler,nullHandler);
-       //return randomstring;
-	   db.transaction(function(tx){
- 
-  // you can uncomment this next line if you want the User table to be
-//empty each time the application runs
- tx.executeSql( 'DROP TABLE User',nullHandler,nullHandler);
- 
-  // this line actually creates the table User if it does not exist
-//and sets up the three columns and their types
-  // note the UserId column is an auto incrementing column which is
-//useful if you want to pull back distinct rows
-  // easily from the table.
 
- },errorHandler,successCallBack);
- onBodyLoad1();
-	}
-	function savelocal() {
- 
- if (!window.openDatabase) {
-   alert('Databases are not supported in this browser.');
-   return;
- }
- 
-// this is the section that actually inserts the values into the User
-//table
- db.transaction(function(transaction) {
- transaction.executeSql('INSERT INTO User(Username, adress, email)VALUES (?,?,?)',[$('#uname').val(), $('#address').val(),$('#email1').val()],nullHandler,errorHandler);
-   $("#uname").val("");
-	$("#address").val("");
-	$("#email1").val("");
-	});
- 
-// this calls the function that will show what is in the User table in
-//the database
- ListDBValues();
-
- return false;
- 
+db.changes().on('change', function() {
+  console.log('Ch-Ch-Changes');
+});
+} 
+else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
 }
 
-
+db.replicate.to('http://115.119.117.86:5984/testak');
 </script>
 </head>
-<body onload="onBodyLoad1()">
-user name<input type="text" id="uname"/><br>
-address<input type="text" id="address"/><br>
-email<input type="text" id="email1"/><br>
-<button onclick="saveclick()">save</button>
-<!--button onclick="sync1()">sync</button!-->
-<span id="lbUsers"></span>
+<body>
+
+
+
+
 </body>
-</html>
