@@ -133,7 +133,7 @@ $.ajax({
  success: function(data) {
    alert('Connected');
    sync1();
-    location.replace('http://192.168.0.132:8905/home/Mobile/onlinepageak.htm');
+    location.replace('http://192.168.0.132:8905/home/Mobile/cordys/WiproCSO/Web/html/offlinedbsync.htm');
  },
  error: function(data) {
    alert('No Internet Connection.');
@@ -549,7 +549,7 @@ margin:1%;background-color:#cc324b;border:none;color:white" onclick="saveclick()
 <input type="button" Value="Enquiry" style="
     width: 98%;
     height: 40px;
-margin:1%;background-color:#cc324b;border:none;color:white">
+margin:1%;background-color:#cc324b;border:none;color:white" onclick="sync1()">
 <br/>
 
 <input type="button" Value="Cancel" style="
