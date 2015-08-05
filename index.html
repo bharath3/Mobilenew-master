@@ -144,8 +144,8 @@ $.ajax({
 	  }
 function sync1(){
 
-  var db1 = new PouchDB('testak');
-  var remoteDB = new PouchDB('http://115.119.117.86:5984/testak')
+  var db1 = new PouchDB('testak', {adapter : 'websql'});
+  var remoteDB = new PouchDB('http://115.119.117.86:5984/testak', {adapter : 'websql'});
  var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
        var string_length = 5;
       
