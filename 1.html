@@ -1,0 +1,36 @@
+<html>
+<head>
+<script src="js/pouchdb-3.6.0.min.js" type="text/javascript"></script>
+<script>
+var db = new PouchDB('testak');
+var a;
+if (typeof(Storage) != "undefined") {
+    // Store
+    //localStorage.setItem("lastname", "Smith");
+	//localStorage.setItem("username","bharath");
+	//a = localStorage.lastname;
+	
+	db.put({
+
+  _id: 'trick@g.com',
+  name: localStorage.lastname,
+  age: 68
+});
+
+db.changes().on('change', function() {
+  console.log('Ch-Ch-Changes');
+});
+} 
+else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+
+db.replicate.to('http://115.119.117.86:5984/testak');
+</script>
+</head>
+<body>
+
+
+
+
+</body>
