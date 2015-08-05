@@ -1,3 +1,11 @@
+
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
 <html class=""><head>
 <title>Ui kits for Iphone, Android and Smartphone Website Templates | Home :: w3layouts</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -15,25 +23,73 @@
   <script src="js/moment-2.2.1.js"></script>
   <script src="js/clndr.js"></script>
   <script src="js/site.js"></script>
+  <script src="js/pouchdb-3.6.0.min.js"></script>
+
   <!----End Calender -------->
+
   <link type="text/css" href="css/mmenu.css" rel="stylesheet" media="all">
 <script type="text/javascript" src="js/jquery.mmenu.min.js"></script>
-<script type="text/javascript">
-		$(function() {
-			$('nav#menu').mmenu();
-		});
-	</script>
+
+	<style>
+	.toggle-box {
+  display: none;
+}
+
+.toggle-box + label {
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  line-height: 21px;
+  margin-bottom: 5px;
+}
+
+.toggle-box + label + div {
+  display: none;
+  margin-bottom: 10px;
+}
+
+.toggle-box:checked + label + div {
+  display: block;
+}
+
+.toggle-box + label:before {
+  background-color: #4F5150;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  color: #FFFFFF;
+  content: "+";
+  display: block;
+  float: left;
+  font-weight: bold;
+  height: 20px;
+  line-height: 20px;
+  margin-right: 5px;
+  text-align: center;
+  width: 20px;
+}
+
+.toggle-box:checked + label:before {
+  content: "\2212";
+}
+	
+	
+		
+	
+	</style>
 </head>
-<body><nav id="menu" class="mm-menu mm-is-menu mm-horizontal"><div class="mm-inner"><ul class="mm-opened">
-								<li><a href="index.html"><i><img src="images/user.png"></i> Profile</a></li>
+<body onload=""><nav id="menu" class="mm-menu mm-is-menu mm-horizontal"><div class="mm-inner"><ul class="mm-opened">
+								<i><img src="images/bharath.jpg"></i><
+								<br/>
+								<li><a href="index.html">Profile</a></li>
 								<li><a href="#"><span><i><img src="images/mail.png"></i>Inbox</span><label class="digits active">5</label><div class="clear"></div></a></li>
-						  		<li class="mm-selected"><a href="#"><span> <i><img src="images/invites.png"></i>Create Lead</span><label class="digits">3</label><div class="clear"></div></a></li>
+						  		<li><a href="createLead.html"><span> <i><img src="images/invites.png"></i>Create Lead</span><label class="digits">3</label><div class="clear"></div></a></li>
 						  		<li><a href="lead.html"><span> <i><img src="images/events.png"></i>Lead Details</span><label class="digits">5</label><div class="clear"></div></a></li>
 						  		<li><a href="Enquiry.html"><i><img src="images/events.png" alt=""></i>Enquiry Details</a></li>
-						  		<li><a href="#"><span><i><img src="images/statistics.png"></i> Statistics</span></a></li>		
+						  		<li><a href="#"><span><i><img src="images/statistics.png"></i>  Statistics</span></a></li>		
 								<li><a href="#"><i><img src="images/settings.png" alt=""></i>Settings</a></li>																
 							</ul></div></nav>			       
-	 <div class="wrap">	 
+	    <div class="wrap">	 
 	      <div class="header">
 	      	  <div class="header_top">
 	      	     	<div class="menu-ico"><a href="#menu"></a></div>
@@ -56,14 +112,14 @@
 				                </div>
 				            </div>
 				             <div class="profile_img">	
-				             	<a href=""><img src="images/profile_img40x40.jpg" alt="">	</a>
+				             	<a href=""><img src="images/bharath2.jpg" alt="" style="height:70px">	</a>
 				             </div>		
 				             <div class="clear"></div>		  	
 					    </div>	
 		 		      <div class="clear"></div>				 
 				   </div>
 			</div>	  					     
-	   </div>
+	   </div><div class="main">  
 	    <div class="wrap">  		 
 	       <div class="column_left">	
 	       	  <!---         
@@ -80,47 +136,7 @@
 				      </div>
 	    		 </div>
 	    		 ----->
-	    		 <div class="chart">
-		               <h3>Os Audience Stats</h3>
-		                  <div class="diagram">
-		                  <canvas id="canvas" height="275" width="275" style="width: 220px; height: 220px;"> </canvas>
-		                  <h4><span>June</span><br>2013</h4>   
-		                 </div>
-		               <!----		              
-						<span><img src="images/chart.png" alt="" /></span>
-						----->					
-						<div class="chart_list">
-			           	  <ul>
-			           	  	<li><a href="#" class="red">ios<p class="percentage">21<em>%</em></p></a></li>
-			           	  	<li><a href="#" class="purple">Mac<p class="percentage">48<em>%</em></p></a></li>
-			           	  	<li><a href="#" class="yellow">Linux<p class="percentage">9<em>%</em></p></a></li>
-			           	  	<li><a href="#" class="blue">Win<p class="percentage">32<em>%</em></p></a></li>
-			           	  	<div class="clear"></div>	
-			           	  </ul>
-			           </div>
-			           <script>
-						var doughnutData = [
-								{
-									value: 21,
-									color:"#E64C65"
-								},
-								{
-									value : 48,
-									color : "#11A8AB"
-								},							
-								{
-									value : 32,
-									color : "#4FC4F6"
-								},	
-								{
-									value : 9,
-									color : "#FCB150"
-								},							
-							
-							];				
-							var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);					
-					</script>
-		          </div>
+	    		 
 		             
 		                         
 		            
@@ -128,16 +144,239 @@
 		          		
 	  		</div> 
 	  		
-            
+            <div class="column_middle">
+              
+		         <div class="weather">
+		               <h3><i><img src="images/location.png" alt=""> </i>Create lead</h3>
+		              
+					  <input class="toggle-box" id="header1" type="checkbox">
+<label for="header1" style="
+    margin: 1%;
+    background-color: #4F5150;
+"><h4 style="color:white">Request Details</h4></label>
+<div><div style="
+    margin: 1%;
+">
+<input type="text" placeholder="Customer/Prospect*" style="
+    width: 98%;
+    height: 40px;
+" id="uname">
+
+<br><br><input type="text" placeholder="ProjectName" style="
+    width: 98%;
+    height: 40px;
+" id="email1">
+<br><br><input type="text" placeholder="ProjectLocation" style="
+    width: 98%;
+    height: 40px;
+" id="address">
+<br><br>
+<select name="carlist" form="carform" style="width: 98%;
+    height: 40px;font-size:x-large">
+   <option value="" style="font-size:x-large">C & I</option>
+   <option value="" style="font-size:x-large">Furniture</option>
+   <option value="" style="font-size:x-large">Chair</option>
+</select>
+<br><br>
+<select name="carlist" form="carform" style="width: 98%;
+    height: 40px;font-size:x-large">
+   <option value="" style="font-size:x-large">Vertical</option>
+</select>
+<br><br>
+<select name="carlist" form="carform" style="width: 98%;
+    height: 40px;font-size:x-large">
+   <option value="" style="font-size:x-large">Region</option>
+</select>
+<br><br>
+<select name="carlist" form="carform" style="width: 98%;
+    height: 40px;font-size:x-large">
+   <option value="" style="font-size:x-large">Branch</option>
+</select>
+<br><br>
+<label style="color:white;font-size:x-large">Lead Type</label>&nbsp&nbsp&nbsp&nbsp<input type="radio"/><span style="color:red">Lead</span>&nbsp&nbsp&nbsp
+<input type="radio"/><span style="color:red">Project Account</span>
+</div></div>
+
+
+
+<!--second -->
+
+
+<input class="toggle-box" id="header5" type="checkbox">
+<label for="header5" style="
+    margin: 1%;
+    background-color: #4F5150;
+"><h4 style="color:white">Customer / Competitor Details</h4></label>
+<div><div style="
+    margin: 1%;
+">
+<input type="text" placeholder="Customer/Prospect*" style="
+    width: 98%;
+    height: 40px;
+">
+
+<br><br><input type="text" placeholder="ProjectName" style="
+    width: 98%;
+    height: 40px;
+">
+<br><br><input type="text" placeholder="ProjectName" style="
+    width: 98%;
+    height: 40px;
+">
+<br><br>
+<select name="carlist" form="carform" style="width: 98%;
+    height: 40px;font-size:x-large">
+   <option value="" style="font-size:x-large">C & I</option>
+   <option value="" style="font-size:x-large">Furniture</option>
+   <option value="" style="font-size:x-large">Chair</option>
+</select>
+<br><br>
+<select name="carlist" form="carform" style="width: 98%;
+    height: 40px;font-size:x-large">
+   <option value="" style="font-size:x-large">Vertical</option>
+</select>
+<br><br>
+<select name="carlist" form="carform" style="width: 98%;
+    height: 40px;font-size:x-large">
+   <option value="" style="font-size:x-large">Region</option>
+</select>
+<br><br>
+<select name="carlist" form="carform" style="width: 98%;
+    height: 40px;font-size:x-large">
+   <option value="" style="font-size:x-large">Branch</option>
+</select>
+<br><br>
+<label style="color:white;font-size:x-large">Lead Type</label>&nbsp&nbsp&nbsp&nbsp<input type="radio" name="ltype"/><span style="color:red">Lead</span>&nbsp&nbsp&nbsp
+<input type="radio" name="ltype"/><span style="color:red">Project Account</span>
+</div></div>
+
+<!-- third -->
+<input class="toggle-box" id="header2" type="checkbox">
+<label for="header2" style="
+    margin: 1%;
+    background-color: #4F5150;
+"><h4 style="color:white">Qualifying Details</h4></label>
+<div><div style="
+    margin: 1%;
+">
+<input type="text" placeholder="Lead Source" style="
+    width: 98%;
+    height: 40px;
+">
+<br/>
+<br/>
+<input type="text" placeholder="Sub Vertical" style="
+    width: 98%;
+    height: 40px;
+">
+<br/>
+<br/>
+<input type="text" placeholder="Type of Account" style="
+    width: 98%;
+    height: 40px;
+">
+<br/>
+<br/>
+<input type="text" placeholder="Customer" style="
+    width: 98%;
+    height: 40px;
+">
+<br/>
+<br/>
+<input type="text" placeholder="Segment" style="
+    width: 98%;
+    height: 40px;
+">
+<br/>
+<br/>
+<input type="text" placeholder="Sub Segment" style="
+    width: 98%;
+    height: 40px;
+">
+<br/>
+<br/>
+<input type="text" placeholder="Dealer" style="
+    width: 98%;
+    height: 40px;
+">
+<br/>
+<br/>
+<label style="color:white">Lead Expected Closure Date</label>
+<input type="date" placeholder="Customer" style="
+    width: 98%;
+    height: 40px;
+">
+<br/>
+<br/>
+<input type="text" placeholder="APP value in RS" style="
+    width: 98%;
+    height: 40px;
+">
+<br/>
+<br/>
+<input type="text" placeholder="status" style="
+    width: 98%;
+    height: 40px;
+">
+<br/>
+<br/>
+<input type="text" placeholder="Total Sqft area(numeric)" style="
+    width: 98%;
+    height: 40px;
+">
+</div></div>
+<!--fourth -->
+
+<input class="toggle-box" id="header3" type="checkbox">
+<label for="header3" style="
+    margin: 1%;
+    background-color: #4F5150;
+"><h4 style="color:white">Comments</h4></label>
+<div><div style="
+    margin: 1%;
+">
+
+
+<textarea placeholder="Comment" style="
+    width: 98%;
+    height: 40px;
+">
+</textarea>
+
+
+</div>	           
+		         
+		          	           
+		       
+    	    </div>
+			<input type="button" Value="Save" style="
+    width: 98%;
+    height: 40px;
+margin:1%;background-color:#cc324b;border:none;color:white" onclick="saveclick()">
+<br/>
+
+<input type="button" Value="Enquiry" style="
+    width: 98%;
+    height: 40px;
+margin:1%;background-color:#cc324b;border:none;color:white" onclick="sync1()">
+<br/>
+
+<input type="button" Value="Cancel" style="
+    width: 98%;
+    height: 40px;
+margin:1%;background-color:#cc324b;border:none;color:white">
     	    
-            
+            <div class="column_right">
+            	
+				 
+				   
+				   
+				   
              </div>
     	<div class="clear"></div>
- 	 </div><div class="copy-right">
-				
-	 	</div>	  				 
-	  
-      
+ 	 </div>
+   </div>	  				 
+	     
    					
 		    
 
