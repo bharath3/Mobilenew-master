@@ -27,8 +27,8 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="index.css" /> 
-		<script type="text/javascript" charset="utf-8" src="pouchdb-4.0.0.min.js"></script>
-		<script type="text/javascript" charset="utf-8" src="jquery.js"></script>
+		<script type="text/javascript" charset="utf-8" src="pouchdb-3.6.0.min.js"></script>
+		
  <script type="text/javascript" charset="utf-8" src="phone.js"></script>
 		<script src="js/jquery.min.js"></script>
         <title>Hello World</title>
@@ -128,7 +128,7 @@ function ListDBValues() {
 
 
 function saveclick(){
-/*$.ajax({
+$.ajax({
  url: 'https://www.google.co.in/',
  success: function(data) {
    alert('Connected');
@@ -140,12 +140,11 @@ function saveclick(){
       savelocal();
 	  alert("save in local db");
 	   }
-	  });*/
+	  });
 	  }
 function sync1(){
 
-  var db1 = new PouchDB('testak', {adapter : 'websql'});
-  var remoteDB = new PouchDB('http://115.119.117.86:5984/testak', {adapter : 'websql'});
+  var db1 = new PouchDB('testak');
  var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
        var string_length = 5;
       
@@ -155,36 +154,25 @@ db.transaction(function(transaction) {
      function(transaction, result) {
       if (result != null && result.rows != null) {
         for (var j = 0; j < result.rows.length; j++) {
-		randomstring="";
           var row = result.rows.item(j);
-		  //var db1 = new PouchDB('testak');
+		  randomstring="";
+		  var db1 = new PouchDB('testak');
 		      for (var i=0; i<string_length; i++) {
                var rnum = Math.floor(Math.random() * chars.length);
 			    randomstring += chars.substring(rnum,rnum+1);
-				
        }
-	   //alert(randomstring);
-	   alert(row.Username);
          db1.put({
     _id: randomstring,
   uname:row.Username ,
   address:row.adress,
   email1:row.email
 });
-alert(row.Username);
-
+db1.replicate.to('http://115.119.117.86:5984/testak');
         }
       }
      },errorHandler);
  },errorHandler,nullHandler);
- alert(db1);
-db1.replicate.to(remoteDB).on('complete', function () {
-  // yay, we're done!
-  alert("Done")
-}).on('error', function (err) {
-  // boo, something went wrong!
-  alert(err);
-});
+ 
  
   db.transaction(function(transaction) {
    transaction.executeSql('SELECT * FROM User;', [],
@@ -192,13 +180,26 @@ db1.replicate.to(remoteDB).on('complete', function () {
       if (result != null && result.rows != null) {
         for (var i = 0; i < result.rows.length; i++) {
           var row = result.rows.item(i);
-          $('#lbUsers').append('<br>' +randomstring+row.Username + '. ' +
+          $('#lbUsers').append('<br>' +randomstring +row.Username + '. ' +
 row.adress+ ' ' + row.email);
         }
       }
      },errorHandler);
  },errorHandler,nullHandler);
        //return randomstring;
+	   db.transaction(function(tx){
+ 
+  // you can uncomment this next line if you want the User table to be
+//empty each time the application runs
+ tx.executeSql( 'DELETE  FROM User',nullHandler,nullHandler);
+ 
+  // this line actually creates the table User if it does not exist
+//and sets up the three columns and their types
+  // note the UserId column is an auto incrementing column which is
+//useful if you want to pull back distinct rows
+  // easily from the table.
+
+ },errorHandler,successCallBack);
 
 	}
 function savelocal() {
@@ -219,12 +220,15 @@ function savelocal() {
  
 // this calls the function that will show what is in the User table in
 //the database
- ListDBValues();
+
 
  return false;
  
 }
+function sync2(){
 
+
+}
 		</script>
     </head>
     <body onload="onBodyLoad1()">
@@ -232,20 +236,9 @@ function savelocal() {
        user name<input type="text" id="uname"/><br>
 address<input type="text" id="address"/><br>
 email<input type="text" id="email1"/><br>
-<button onclick="savelocal()">save</button>
+<button onclick="saveclick()">save</button>
 <button onclick="sync1()">sync1</button>
 <span id="lbUsers"></span>
-	   <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-       
-        <script type="text/javascript" src="index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
+	
     </body>
 </html>
